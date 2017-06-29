@@ -2,8 +2,8 @@ block includes
   include _util-fns
 
 :marked
-  Angular applications are made up of _components_.
-    A _component_ is the combination of an HTML template and a component class that controls a portion of the screen. Here is an example of a component that displays a simple string:
+  Angularアプリケーションは _コンポーネント_ で構成されています。
+    _コンポーネント_ は、HTMLテンプレートと画面の一部を制御するコンポーネントクラスの組み合わせです。 単純な文字列を表示するコンポーネントの例を次に示します。
 
 +makeExample('src/app/app.component.ts')(format='.')
 
@@ -15,26 +15,25 @@ block qs-src-online-and-local
       and prepare for development of a real Angular application.
 
 :marked
-  Every component begins with an `@Component` [decorator](glossary.html#decorator '"decorator" explained')
-  function that takes a _metadata_ object. The metadata object describes how the HTML template and component class work together.
+  すべてのコンポーネントは `@Component` [decorator](glossary.html#decorator '"decorator" explained')で始まります。
+  _metadata_オブジェクトを取る関数です。 メタデータオブジェクトは、HTMLテンプレートとコンポーネントクラスがどのように連携するかを記述します。
 
-  The `selector` property tells Angular to display the component inside a custom `<my-app>` tag in the `index.html`.
+  `selector`プロパティは、` index.html`のカスタム `<my-app>`タグの中にコンポーネントを表示するようにAngularに指示します。
 +makeExample('src/index.html','my-app','index.html (inside <body>)')(format='.')
 :marked
-  The `template` property defines a message inside an `<h1>` header.
-  The message starts with "Hello" and ends with `{{name}}`,
-  which is an Angular [interpolation binding](guide/displaying-data.html) expression.
-  At runtime, Angular replaces `{{name}}` with the value of the component's `name` property.
-  Interpolation binding is one of many Angular features you'll discover in this documentation.
+  `template`プロパティは` <h1> `ヘッダの中にメッセージを定義します。
+  メッセージは "Hello"で始まり、 `{{name}}`で終わります。
+  Angular の[補間バインディング](guide/displaying-data.html)です。
+  実行時に、Angularは `{{name}}`をコンポーネントの `name`プロパティの値で置き換えます。
+  補間バインディングは、このドキュメントで紹介する多くの Angular 機能の1つです。
 
 :marked
-  In the example, change the component class's `name` property from `'Angular'` to `'World'` and see what happens.
+  この例では、コンポーネントクラスの `name`プロパティを` `Angular``から` `World``に変更し、何が起こるかを見ていきます。
 
 .callout.is-helpful
   header A word about TypeScript
   p.
-    This example is written in <a href="http://www.typescriptlang.org/" target="_blank" title="TypeScript">TypeScript</a>, a superset of JavaScript. Angular
-    uses TypeScript because its types make it easy to support developer productivity with tooling. You can also write Angular code in JavaScript; <a href="cookbook/ts-to-js.html">this guide</a> explains how.
+    この例は、JavaScriptのスーパーセットである<a href="http://www.typescriptlang.org/" target="_blank" title="TypeScript"> TypeScript </a>で書かれています。 Angularでは、タイプによって、ツールを使用して開発者の生産性を容易にサポートできるため、TypeScriptが使用されます。 AngularコードはJavaScriptで記述することもできます。 <a href="cookbook/ts-to-js.html">このガイド</a>では方法について説明しています。
 
 .l-sub-section
   :marked
