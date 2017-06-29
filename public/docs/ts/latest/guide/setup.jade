@@ -5,13 +5,12 @@ a#develop-locally
 :marked
   ## Setup a local development environment
 
-  The <live-example name=quickstart>QuickStart live-coding</live-example> example is an Angular _playground_.
-  It's not where you'd develop a real application. 
-  You [should develop locally](#why-locally "Why develop locally") on your own machine ... and that's also how we think you should learn Angular.
+  <live-example name=quickstart> QuickStartライブコーディング</live-example>の例は、Angular _playground_です。
+  実際のアプリケーションを開発する場所ではありません。
+  あなたは自分のマシンでローカルに開発する必要があります(#why-locally "なぜローカルに開発するのですか)...そして、それはあなたが角度を学ぶべきだと思う方法です。
 
-  Setting up a new project on your machine is quick and easy with the **QuickStart seed**,
-  maintained [on github](https://github.com/angular/quickstart "Install the github QuickStart repo"). 
-
+   **QuickStartシード** を使用すると、マシン上に新しいプロジェクトをセットアップすることが迅速かつ簡単に行えます。
+   [github](https://github.com/angular/quickstart "github QuickStart repoのインストール")でメンテナンスされています。
 :marked
   Make sure you have [node and npm installed](#install-prerequisites "What if you don't have node and npm?").
   Then ...
@@ -25,7 +24,7 @@ a#clone
 :marked
   ### Clone
 
-  Perform the _clone-to-launch_ steps with these terminal commands.
+  これらのターミナルコマンドで_clone-to-launch_ステップを実行します。
 
 code-example(language="sh" class="code-shell").
   git clone https://github.com/angular/quickstart.git quickstart
@@ -35,14 +34,12 @@ code-example(language="sh" class="code-shell").
 
 .alert.is-important
   :marked
-    `npm start` fails in _Bash for Windows_ which does not support networking to servers as of January, 2017.
+    2017年1月現在、Windowsへのネットワーキングをサポートしていない_Bash for Windows_では `npm start`が失敗します。
 
 a#download
 :marked
   ### Download
-  <a href="https://github.com/angular/quickstart/archive/master.zip" title="Download the QuickStart seed repository">Download the QuickStart seed</a>
-  and unzip it into your project folder. Then perform the remaining steps with these terminal commands.
-
+  <a href="https://github.com/angular/quickstart/archive/master.zip" title="クイックスタートシードリポジトリをダウンロードします。>クイックスタートシードをダウンロード</a>し、プロジェクトフォルダに解凍します。 次に、これらのターミナルコマンドで残りの手順を実行します。
 code-example(language="sh" class="code-shell").
   cd quickstart
   npm install
@@ -50,7 +47,7 @@ code-example(language="sh" class="code-shell").
 
 .alert.is-important
   :marked
-    `npm start` fails in _Bash for Windows_ which does not support networking to servers as of January, 2017.
+    2017年1月現在、Windowsへのネットワーキングをサポートしていない_Bash for Windows_では `npm start`が失敗します。
 
 a#non-essential
 .l-main-section
