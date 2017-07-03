@@ -2,72 +2,72 @@ block includes
   include ../_util-fns
 
 :marked
-  The grand plan for this tutorial is to build an app that helps a staffing agency manage its stable of heroes.
+  このチュートリアルの壮大な計画は、人材派遣機関が英雄の安定を管理するのに役立つアプリを構築することです。
 
-  The Tour of Heroes app covers the core fundamentals of Angular. You'll build a basic app that
-  has many of the features you'd expect to find in a full-blown, data-driven app: acquiring and displaying
-  a list of heroes, editing a selected hero's detail, and navigating among different
-  views of heroic data.
+  Tour of HeroesアプリはAngularの基本的な基本をカバーしています。ヒーローのリストを取得して表示し、
+  選択したヒーローの詳細を編集し、さまざまなビューの中からナビゲートする、
+  本格的なデータ駆動型アプリで見つかると期待している
+  多くの機能を備えた基本的なアプリケーションを構築します。英雄的なデータ。
 
-  You'll use built-in directives to show and hide elements and display lists of hero data.
-  You'll create components to display hero details and show an array of heroes.
-  You'll use one-way data binding for read-only data. You'll add editable fields to update a model
-  with two-way data binding. You'll bind component methods to user events, like keystrokes and clicks.
-  You'll enable users to select a hero from a master list and edit that hero in the details view. You'll
-  format data with pipes. You'll create a shared service to assemble the heroes.
-  And you'll use routing to navigate among different views and their components.
+  組込みディレクティブを使用して要素を表示および隠し、ヒーローデータのリストを表示します。
+  ヒーローの詳細を表示するコンポーネントを作成し、ヒーローの配列を表示します。
+  読み取り専用データに対して一方向データバインディングを使用します。編集可能なフィールドを追加して、双方向データバインディングでモデルを更新します。
+  コンポーネントメソッドを、キーストロークやクリックなどのユーザーイベントにバインドします。
+  ユーザーはマスターリストからヒーローを選択し、そのヒーローを詳細ビューで編集することができます。
+  パイプでデータをフォーマットします。ヒーローを組み立てるための共有サービスを作成します。
+  また、ルーティングを使用してさまざまなビューとそのコンポーネントをナビゲートします。
   <!-- CF: Should this be a bullet list? -->
 
-  You'll learn enough core Angular to get started and gain confidence that
-  Angular can do whatever you need it to do.
-  You'll cover a lot of ground at an introductory level, and you'll find many links
-  to pages with greater depth.
+  Angularがあなたの必要とすることを何でもすることができます。
+  
+  あなたは入門レベルで多くの基礎をカバーし、より深いページへの多くのリンクを見つけるでしょう。
+  
 
-  When you're done with this tutorial, the app will look like this <live-example name="toh-6"></live-example>.
+  このチュートリアルを終えたら、アプリは次のようになります <live-example name="toh-6"></live-example>.
 
 
 .l-main-section
 :marked
   ## The end game
 
-  Here's a visual idea of where this tutorial leads, beginning with the "Dashboard"
-  view and the most heroic heroes:
+  「ダッシュボード」ビューと最もヒーローなヒーローから始めて、このチュートリアルがどこにあるのかを視覚的に示しています。
+  
 
 figure.image-display
   img(src='/resources/images/devguide/toh/heroes-dashboard-1.png' alt="Output of heroes dashboard")
 
 :marked
-  You can click the two links above the dashboard ("Dashboard" and "Heroes") 
-  to navigate between this Dashboard view and a Heroes view.
+  ダッシュボード上の2つのリンク（"ダッシュボード"と"ヒーローズ"）をクリックすると、このダッシュボードビューとヒーローズビューの間をナビゲートできます。
+  
 
-  If you click the dashboard hero "Magneta," the router opens a "Hero Details" view
-  where you can change the hero's name.
+  ダッシュボードのヒーロー"Magneta"をクリックすると、ルータはヒーローの名前を変更できる"Hero Details"ビューを開きます。
+ 
 
 figure.image-display
   img(src='/resources/images/devguide/toh/hero-details-1.png' alt="Details of hero in app")
 
 :marked
-  Clicking the "Back" button returns you to the Dashboard.
-  Links at the top take you to either of the main views.
-  If you click "Heroes," the app displays the "Heroes" master list view.
+  "戻る"ボタンをクリックすると、ダッシュボードに戻ります。
+  一番上のリンクはメインビューのいずれかに移動します。
+  "Heroes"をクリックすると、アプリは"Heroes"マスターリストビューを表示します。
 
 figure.image-display
   img(src='/resources/images/devguide/toh/heroes-list-2.png' alt="Output of heroes list app")
 //  CF: The ability to add heroes isn't shown in the images or discussed in this page. Should that be added?
 
 :marked
-  When you click a different hero name, the read-only mini detail beneath the list reflects the new choice.
+  別のヒーロー名をクリックすると、リストの下にある読み取り専用ミニディテールが新しい選択肢を反映します。
 
-  You can click the "View Details" button to drill into the
-  editable details of the selected hero.
+  [詳細を表示]ボタンをクリックすると、
+  選択されたヒーローの編集可能な詳細。
 
-  The following diagram captures all of the navigation options.
+  次の図は、すべてのナビゲーションオプションをキャプチャしています。
 
 figure.image-display
   img(src='/resources/images/devguide/toh/nav-diagram.png' alt="View navigations")
 
 :marked
-  Here's the app in action:
+  実際のアプリは次のとおりです
 
 figure.image-display
   img(src='/resources/images/devguide/toh/toh-anim.gif' alt="Tour of Heroes in Action")
@@ -76,8 +76,8 @@ figure.image-display
 :marked
   ## Up next
 
-  You'll build the Tour of Heroes app, step by step.
-  Each step is motivated with a requirement that you've likely
-  met in many applications. Everything has a reason.
+  Tour of Heroesアプリを段階的に作成します。
+  それぞれのステップは、おそらく
+  多くのアプリケーションで出会った。 すべてには理由があります。
 
-  Along the way, you'll become familiar with many of the core fundamentals of Angular.
+  途中で、Angularの基本的な基本事項の多くに精通しています。
