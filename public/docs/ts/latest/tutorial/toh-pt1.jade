@@ -1,11 +1,11 @@
 include ../_util-fns
 
 :marked
-  ## Setup to develop locally
-  Follow the [setup](../guide/setup.html) instructions for creating a new project
-  named <code>angular-tour-of-heroes</code>.
+  ## ローカルで開発するためのセットアップ
+  新しいプロジェクトを作成するには[setup]（../ guide / setup.html）の指示に従います
+  <code> angle-tour-of-heroes </ code>という名前です。
 
-  The file structure should look like this:
+  ファイル構造は次のようになります。
 
 .filetree
   .file angular-tour-of-heroes
@@ -24,79 +24,79 @@ include ../_util-fns
     .file node_modules ...
     .file package.json
 :marked
-  When you're done with this page, the app should look like this <live-example></live-example>.
+  このページが完成したら、このアプリは<live-example> </ live-example>のようになります。
 
 a#keep-transpiling
 :marked
-  ## Keep the app transpiling and running
-  Enter the following command in the terminal window:
+  ## アプリを透明にして実行し続ける
+  端末ウィンドウで次のコマンドを入力します。
 
 code-example(language="sh" class="code-shell").
   npm start
 
 :marked
-  This command runs the TypeScript compiler in "watch mode", recompiling automatically when the code changes.
-  The command simultaneously launches the app in a browser and refreshes the browser when the code changes.
+  このコマンドは、「時計モード」でTypeScriptコンパイラを実行し、コードが変更されたときに自動的に再コンパイルします。
+  このコマンドは、ブラウザでアプリを同時に起動し、コードが変更されたときにブラウザを更新します。
 
-  You can keep building the Tour of Heroes without pausing to recompile or refresh the browser.
+  ブラウザを再コンパイルまたは更新するために一時停止することなく、ヒーローのツアーを構築し続けることができます。
 
 .l-main-section
   :marked
     ## Show the hero
-    Add two properties to the `AppComponent`: a `title` property for the app name and a `hero` property
-    for a hero named "Windstorm."
+    `AppComponent`に2つのプロパティを追加してください：アプリケーション名の` title`プロパティと `hero`プロパティ
+    "風嵐"と呼ばれる英雄のために。
 
   +makeExample('toh-1/ts/app/app.component.1.ts', 'app-component-1', 'app.component.ts (AppComponent class)')(format=".")
 
   :marked
-    Now update the template in the `@Component` decorator with data bindings to these new properties.
+    `@ Component`デコレータのテンプレートを、これらの新しいプロパティへのデータバインディングで更新します。
 
   +makeExample('toh-1/ts/app/app.component.1.ts', 'show-hero',  'app.component.ts (@Component)')(format='.')
 
   :marked
-    The browser refreshes and displays the title and hero name.
+    ブラウザが更新され、タイトルとヒーロー名が表示されます。
 
-    The double curly braces are Angular's *interpolation binding* syntax.
-    These interpolation bindings present the component's `title` and `hero` property values,
-    as strings, inside the HTML header tags.
+    二重中括弧はAngularの*補間バインディング*構文です。
+    これらの補間バインディングは、コンポーネントの `title`と` hero`プロパティ値を表し、
+    文字列として、HTMLヘッダータグ内に挿入します。
 
 .l-sub-section
   :marked
-    Read more about interpolation in the [Displaying Data](../guide/displaying-data.html) page.
+    補間の詳細については、[Displaying Data]（../ guide / display-data.html）ページを参照してください。
 
 :marked
-  ### Hero object
+  ### ヒーローオブジェクト
 
-  The hero needs more properties.
-  Convert the `hero` from a literal string to a class.
+  主人公はより多くの特性を必要とします。
+  `英雄`をリテラル文字列からクラスに変換する。
 
-  Create a `Hero` class with `id` and `name` properties.
-  Add these properties near the top of the `app.component.ts` file, just below the import statement.
+  `id`と` name`プロパティを持つ `Hero`クラスを作成します。
+  `app.component.ts`ファイルの上部、これらのプロパティをimportステートメントのすぐ下に追加してください。
 
 +makeExample('toh-1/ts/src/app/app.component.ts', 'hero-class-1', 'src/app/app.component.ts (Hero class)')(format=".")
 
 :marked
-  In the `AppComponent` class, refactor the component's `hero` property to be of type `Hero`,
-  then initialize it with an `id` of `1` and the name `Windstorm`.
+  `AppComponent`クラスでは、コンポーネントの` hero`プロパティが `Hero`型であるようにリファクタリングします。
+  `id`の` 1`と `Windstorm`という名前で初期化します。
 
 +makeExample('toh-1/ts/src/app/app.component.ts', 'hero-property-1', 'src/app/app.component.ts (hero property)')(format=".")
 
 :marked
-  Because you changed the hero from a string to an object,
-  update the binding in the template to refer to the hero's `name` property.
+  ヒーローを文字列からオブジェクトに変更したので、
+  ヒーローの `name`プロパティを参照するようにテンプレート内のバインディングを更新します。
 
 +makeExample('toh-1/ts/app/app.component.1.ts', 'show-hero-2')
 :marked
-  The browser refreshes and continues to display the hero's name.
+  ブラウザが更新され、主人公の名前が表示され続けます。
 
-  ### Adding HTML with multi-line template strings
+  ### 複数行のテンプレート文字列でのHTMLの追加
 
-  To show all of the hero's properties,
-  add a `<div>` for the hero's `id` property and another `<div>` for the hero's `name`.
-  To keep the template readable, place each `<div>` on its own line.
+  ヒーローのすべての特性を示すために、
+  ヒーローの `id`プロパティに` <div> `を追加し、ヒーローの` name`にもう一つ `<div>を追加します。
+  テンプレートを読み込み可能にするには、それぞれの `<div>`をそれ自身の行に置きます。
 
-  The backticks around the component template let you put the `<h1>`, `<h2>`, and `<div>` elements on their own lines,
-  thanks to the <i>template literals</i> feature in ES2015 and TypeScript. For more information, see
+  コンポーネントテンプレートのバッククォートでは、 `<h1>`、 `<h2>`、および `<div>`要素をそれぞれの行に置くことができます。
+  ES2015とTypeScriptの<i>テンプレートリテラル</ i>機能のおかげです。詳細は、次を参照してください。
   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" target="_blank" title="template literal">Template literals</a>.
 
 
@@ -104,77 +104,77 @@ code-example(language="sh" class="code-shell").
 
 .l-main-section
 :marked
-  ## Edit the hero name
+  ## 主人公の名前を編集する
 
-  Users should be able to edit the hero name in an `<input>` textbox.
-  The textbox should both _display_ the hero's `name` property
-  and _update_ that property as the user types.
+  ユーザーは `<input>`テキストボックスで英雄の名前を編集できるはずです。
+  テキストボックスは、ヒーローの `name`プロパティを_display_
+  ユーザーが入力する_update_そのプロパティ。
 
-  You need a two-way binding between the `<input>` form element and the `hero.name` property.
+  `<input>`フォーム要素と `hero.name`プロパティの間に双方向バインディングが必要です。
 
-  ### Two-way binding
+  ### 双方向バインディング
 
-  Refactor the hero name in the template so it looks like this:
+  テンプレートのヒーロー名をリファクタリングして、次のようにします。
 +makeExample('toh-1/ts/app/app.component.1.ts', 'name-input')(format='.')
 
 :marked
-  `[(ngModel)]` is the Angular syntax to bind the `hero.name` property
-  to the textbox.
-  Data flows _in both directions:_ from the property to the textbox,
-  and from the textbox back to the property.
+  `[（ngModel）]`は、 `hero.name`プロパティをバインドするAngular構文です
+  テキストボックスに。
+  データは両方向に流れます：プロパティからテキストボックスまで_
+  テキストボックスからプロパティに戻ります。
 
-  Unfortunately, immediately after this change, the application breaks.
-  If you looked in the browser console, you'd see Angular complaining that
-  "`ngModel` ... isn't a known property of `input`."
+  残念ながら、この変更の直後に、アプリケーションは中断します。
+  ブラウザのコンソールで見ると、Angularが
+  "` ngModel` ...は `input`のプロパティとして知られていません。"
 
-  Although `NgModel` is a valid Angular directive, it isn't available by default.
-  It belongs to the optional `FormsModule`.
-  You must opt-in to using that module.
+  `NgModel`は有効なAngularディレクティブですが、デフォルトでは使用できません。
+  オプションのFormsModuleに属します。
+  そのモジュールの使用をオプトインする必要があります。
+  
+  ### _FormsModule_をインポートする
 
-  ### Import the _FormsModule_
+  `app.module.ts`ファイルを開き、` @ angular / forms`ライブラリから `FormsModule`シンボルをインポートします。
+  次に、 `FormsModule`を` @ NgModule`メタデータの `imports`配列に追加します。これにはリストが含まれています
+  アプリが使用する外部モジュールの
 
-  Open the `app.module.ts` file and import the `FormsModule` symbol from the `@angular/forms` library.
-  Then add the `FormsModule` to the `@NgModule` metadata's `imports` array, which contains the list
-  of external modules that the app uses.
-
-  The updated `AppModule` looks like this:
+  更新された `AppModule`は次のようになります
 +makeExample('toh-1/ts/src/app/app.module.ts', '', 'app.module.ts (FormsModule import)')
 
 .l-sub-section
   :marked
-    Read more about `FormsModule` and `ngModel` in the
-    [Two-way data binding with ngModel](../guide/forms.html#ngModel) section of the
-    [Forms](../guide/forms.html) guide and the
-    [Two-way binding with NgModel](../guide/template-syntax.html#ngModel) section of the
-    [Template Syntax](../guide/template-syntax.html) guide.
+    `FormsModule`と` ngModel`の詳細については、
+    [ngModelとの双方向データバインディング]（../ guide / forms.html＃ngModel）セクション
+    [Forms]（../ guide / forms.html）ガイドと
+    [NgModelとの双方向バインディング]（../ guide / template-syntax.html＃ngModel）セクション
+    [Template Syntax]（../ guide / template-syntax.html）ガイド。
 
 :marked
-  When the browser refreshes, the app should work again.
-  You can edit the hero's name and see the changes reflected immediately in the `<h2>` above the textbox.
+  ブラウザが更新されると、アプリは再び動作するはずです。
+  主人公の名前を編集して、テキストボックスの上の `<h2>`に反映された変更を見ることができます。
 
 .l-main-section
 :marked
-  ## The road you've travelled
+  ## あなたが旅した道
   
-  Take stock of what you've built.
+  あなたが造ったものを取りなさい。
 
-  * The Tour of Heroes app uses the double curly braces of interpolation (a type of one-way data binding)
-  to display the app title and properties of a `Hero` object.
-  * You wrote a multi-line template using ES2015's template literals to make the template readable.
-  * You added a two-way data binding to the `<input>` element
-  using the built-in `ngModel` directive. This binding both displays the hero's name and allows users to change it.
-  * The `ngModel` directive propagates changes to every other binding of the `hero.name`.
+  * Tour of Heroesアプリは、補間の二重中カッコ（片方向データバインディングの一種）を使用しています。
+  `Hero`オブジェクトのアプリケーションタイトルとプロパティを表示します。
+  * ES2015のテンプレートリテラルを使用して複数行のテンプレートを作成し、テンプレートを読みやすくしました。
+  *あなたは `<input>`要素への双方向データバインディングを追加しました
+  組み込みの `ngModel`ディレクティブを使用します。このバインディングは、ヒーローの名前を表示し、ユーザーがそれを変更できるようにします。
+  * `ngModel`ディレクティブは、` hero.name`の他のすべてのバインディングに変更を伝播します。
 
-  Your app should look like this <live-example></live-example>.
+  あなたのアプリはこの<live-example> </ live-example>のようになります。
 
-  Here's the complete `app.component.ts` as it stands now:
-
+  ここには完全な `app.component.ts`があります。
+  
 +makeExample('toh-1/ts/src/app/app.component.ts', '', 'src/app/app.component.ts')
 
 
 .l-main-section
 :marked
-  ## The road ahead
-  In the [next tutorial page](./toh-pt2.html), you'll build on the Tour of Heroes app to display a list of heroes.
-  You'll also allow the user to select heroes and display their details.
-  You'll learn more about how to retrieve lists and bind them to the template.
+  ## 前の道
+  [次のチュートリアルのページ]（./ toh-pt2.html）では、ヒーローのアプリを構築してヒーローのリストを表示します。
+  ユーザーはヒーローを選択してその詳細を表示することもできます。
+  リストを取得してテンプレートにバインドする方法の詳細を学習します。
