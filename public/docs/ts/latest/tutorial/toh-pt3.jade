@@ -1,23 +1,23 @@
 include ../_util-fns
 
 :marked
-  The `AppComponent` is doing _everything_ at the moment.
-  In the beginning, it showed details of a single hero.
-  Then it became a master/detail form with both a list of heroes and the hero detail.
-  Soon there will be new requirements and capabilities.
-  You can't keep piling features on top of features in one component; that's not maintainable.
+ `AppComponent`は現時点で_everything_を実行しています。
+  最初は、単一のヒーローの詳細を示しました。
+  その後、主人公のリストと主人公の詳細の両方を持つマスター/ディテールフォームになりました。
+  まもなく新しい要件と能力が生まれます。
+  1つのコンポーネントのフィーチャーの上にフィリングフィーチャーを維持することはできません。それは維持できません。
 
-  You'll need to break it up into sub-components, each focused on a specific task or workflow.
-  Eventually, the `AppComponent` could become a simple shell that hosts those sub-components.
+  それぞれを特定のタスクやワークフローに重点を置いたサブコンポーネントに分割する必要があります。
+  最終的に、 `AppComponent`は、それらのサブコンポーネントをホストする単純なシェルになることができます。
 
-  In this page, you'll take the first step in that direction by carving out the hero details into a separate, reusable component.
-  When you're done, the app should look like this <live-example></live-example>.
-
+  このページでは、ヒーローの詳細を再利用可能な別のコンポーネントに分割して、その方向への最初のステップを実行します。
+  完了したら、アプリはこの<live-example> </ live-example>のようになります。
+  
 .l-main-section
 :marked
-  ## Where you left off
-  Before getting started on this page, verify that you have the following structure from earlier in the Tour of Heroes.
-  If not, go back to the previous pages.
+  ## あなたがどこで中断したか
+  このページを開始する前に、Tour of Heroesの初期の構造と同じ構造であることを確認してください。
+  そうでない場合は、前のページに戻ります。
 
 .filetree
   .file angular-tour-of-heroes
@@ -36,176 +36,176 @@ include ../_util-fns
     .file node_modules ...
     .file package.json
 :marked
-  Keep the app transpiling and running while you build the Tour of Heroes
-  by entering the `npm start` command in a terminal window
-  [as you did before](toh-pt1.html#keep-transpiling "Keep the app running").
+  Tour of Heroesを構築している間、アプリを蒸留して稼働させておく
+  ターミナルウィンドウに `npm start`コマンドを入力すると
+  [以前と同じように]（toh-pt1.html＃keep-transpiling "アプリを実行し続ける"）。
 
-  ## Make a hero detail component
-  Add a file named `hero-detail.component.ts` to the `app/` folder.
-  This file will hold the new `HeroDetailComponent`.
+  ##ヒーローディテールコンポーネントを作る
+  `hero-detail.component.ts`という名前のファイルを` app / `フォルダに追加します。
+  このファイルは新しい `HeroDetailComponent`を保持します。
 
-  The file and component names follow the standard described in the Angular
-  [style guide](../guide/style-guide.html#naming).
+  ファイル名とコンポーネント名は、Angular
+  [スタイルガイド]（../ guide / style-guide.html＃naming）
 
-  * The component _class_ name should be written in _upper camel case_ and end in the word "Component".
-  The hero detail component class is `HeroDetailComponent`.
+  * _class_ nameコンポーネントは、_upper camel case_で記述され、 "Component"という単語で終わる必要があります。
+  主人公の詳細コンポーネントクラスは `HeroDetailComponent`です。
 
-  * The component _file_ name should be spelled in [_lower dash case_](../guide/glossary.html#dash-case),
-  each word separated by dashes, and end in `.component.ts`.
-  The `HeroDetailComponent` class goes in the `hero-detail.component.ts` file.
+  *コンポーネント_ファイル_名は、[_lowerダッシュケース_]（../ guide / glossary.html＃ダッシュケース）で綴る必要があります。
+  各単語はダッシュで区切られ、 `.component.ts`で終わります。
+  `HeroDetailComponent`クラスは` hero-detail.component.ts`ファイルに入っています。
 
-  Start writing the `HeroDetailComponent` as follows:
+  次のように `HeroDetailComponent`を書き始めます：
 
 +makeExample('toh-3/ts/app/hero-detail.component.1.ts', 'v1', 'app/hero-detail.component.ts (initial version)')(format=".")
 a#selector
 :marked
-  To define a component, you always import the `Component` symbol.
+  コンポーネントを定義するには、常に `Component`シンボルをインポートします。
 
-  The `@Component` decorator provides the Angular metadata for the component.
-  The CSS selector name, `hero-detail`, will match the element tag
-  that identifies this component within a parent component's template.
-  [Near the end of this tutorial page](#add-hero-detail "Add the HeroDetailComponent to the AppComponent"),
-  you'll add a `<hero-detail>` element to the `AppComponent` template.
+  `@ Component`デコレータは、コンポーネントのAngularメタデータを提供します。
+  CSSセレクタ名 `hero-detail`は要素タグと一致します
+  親コンポーネントのテンプレート内でこのコンポーネントを識別します。
+  [このチュートリアルページの最後にある]（＃add-hero-detail "HeroDetailComponentをAppComponentに追加する"）、
+  あなたは `<hero-detail>`要素を `AppComponent`テンプレートに追加します。
 
-  Always `export` the component class because you'll always `import` it elsewhere.
+  いつでもコンポーネントクラスを `export 'するので、常にコンポーネントクラスを` export'します。
 :marked
-  ### Hero detail template
-  To move the hero detail view to the `HeroDetailComponent`,
-  cut the hero detail _content_ from the bottom of the `AppComponent` template
-  and paste it into a new `template` property in the `@Component` metadata.
+  ### ヒーロー詳細テンプレート
+  ヒーローの詳細ビューを `HeroDetailComponent`に移動するには、
+  主人公の詳細_content_を `AppComponent`テンプレートの一番下から切り取ってください
+  それを `@ Component`メタデータの新しい` template`プロパティに貼り付けます。
 
-  The `HeroDetailComponent` has a _hero_, not a _selected hero_.
-  Replace the word, "selectedHero", with the word, "hero", everywhere in the template.
-  When you're done, the new template should look like this:
+  `HeroDetailComponent`は_hero_を持っていますが、選ばれたヒーローはありません。
+  "selectedHero"という単語をテンプレートのどこにでも置いて "hero"という単語に置き換えます。
+  完了したら、新しいテンプレートは次のようになります。
 
 +makeExample('toh-3/ts/src/app/hero-detail.component.ts', 'template', 'src/app/hero-detail.component.ts (template)')(format=".")
 
 
 :marked
-  ### Add the *hero* property
+  ### * hero *プロパティを追加する
 
-  The `HeroDetailComponent` template binds to the component's `hero` property.
-  Add that property to the `HeroDetailComponent` class like this:
+  `HeroDetailComponent`テンプレートはコンポーネントの` hero`プロパティにバインドされます。
+  そのようなプロパティを `HeroDetailComponent`クラスに追加します
 +makeExample('toh-3/ts/app/hero-detail.component.1.ts', 'hero', 'src/app/hero-detail.component.ts (hero property)')
-:marked
-  The `hero` property is typed as an instance of `Hero`.
-  The `Hero` class is still in the `app.component.ts` file.
-  Now there are two components that need to reference the `Hero` class.
-  The Angular [style guide](../guide/style-guide.html#rule-of-one "Style guide: rule of one") recommends one class per file anyway.
+:marked  
+`hero`プロパティは` Hero`のインスタンスとしてタイプされます。
+  `Hero`クラスはまだ` app.component.ts`ファイルにあります。
+  今、 `Hero`クラスを参照する必要がある2つのコンポーネントがあります。
+  Angular [スタイルガイド]（../ guide / style-guide.html＃rule-of-one "スタイルガイド：1つのルール"）は、ファイルごとに1つのクラスを推奨します。
 
-  Move the `Hero` class from `app.component.ts` to its own `hero.ts` file.
+  `Hero`クラスを` app.component.ts`から `hero.ts`ファイルに移動してください。
 
 +makeExample('toh-3/ts/src/app/hero.ts', '', 'src/app/hero.ts')(format=".")
 
 :marked
-  Now that the `Hero` class is in its own file, the `AppComponent` and the `HeroDetailComponent` have to import it.
-  Add the following `import` statement near the top of _both_ the `app.component.ts` and the `hero-detail.component.ts` files.
+  `Hero`クラスが独自のファイルになったので、` AppComponent`と `HeroDetailComponent`はそれをインポートする必要があります。
+  `app.component.ts`と` hero-detail.component.ts`ファイルの最上部の次の `import`ステートメントを追加してください。
 +makeExample('toh-3/ts/app/hero-detail.component.1.ts', 'hero-import')
 
 :marked
-  ### The *hero* property is an *input* property
+  ### * hero *プロパティは* input *プロパティです
 
-  [Later in this page](#add-hero-detail "Add the HeroDetailComponent to the AppComponent"),
-  the parent `AppComponent` will tell the child `HeroDetailComponent` which hero to display
-  by binding its `selectedHero` to the `hero` property of the `HeroDetailComponent`.
-  The binding will look like this:
+  [このページの後のほう]（＃add-hero-detail "HeroDetailComponentをAppComponentに追加"）、
+  親 `AppComponent`は、どの主人が表示するかを子供に` HeroDetailComponent`と伝えます
+  その `selectedHero`を` HeroDetailComponent`の `hero`プロパティに束縛することによって、
+  バインディングは次のようになります。
 +makeExample('toh-3/ts/app/app.component.1.html', 'hero-detail-binding')(format='.')
 :marked
-  Putting square brackets around the `hero` property, to the left of the equal sign (=),
-  makes it the *target* of a property binding expression.
-  You must declare a *target* binding property to be an *input* property.
-  Otherwise, Angular rejects the binding and throws an error.
+  `hero`プロパティの周りに等号（=）の左側に角括弧を置くと、
+  プロパティバインディング式の* target *にします。
+  * target *バインディング・プロパティーを* input *プロパティーとして宣言する必要があります。
+  それ以外の場合、Angularはバインディングを拒否し、エラーをスローします。
 
-  First, amend the `@angular/core` import statement to include the `Input` symbol.
+  まず、 `@ angular / core` import文を修正して` Input`シンボルをインクルードします。
 +makeExample('toh-3/ts/src/app/hero-detail.component.ts', 'import-input', 'src/app/hero-detail.component.ts (excerpt)')(format='.')
 
 :marked
-  Then declare that `hero` is an *input* property by
-  preceding it with the `@Input` decorator that you imported earlier.
+  次に、 `英雄 'が*入力*プロパティであると宣言します。
+  先ほどインポートした `@ Input`デコレータで始まります。
 +makeExample('toh-3/ts/src/app/hero-detail.component.ts', 'hero', 'src/app/hero-detail.component.ts (excerpt)')(format='.')
 .l-sub-section
   :marked
-    Read more about _input_ properties in the
-    [Attribute Directives](../guide/attribute-directives.html#why-input) page.
+    _input_プロパティの詳細については、
+    [属性指令]（../ guide / attribute-directives.html＃why-input）ページ。
 
 :marked
-  That's it. The `hero` property is the only thing in the `HeroDetailComponent` class.
+  それでおしまい。 `hero`プロパティは` HeroDetailComponent`クラス内の唯一のものです。
 +makeExample('toh-3/ts/src/app/hero-detail.component.ts', 'class')(format='.')
 :marked
-  All it does is receive a hero object through its `hero` input property and then bind to that property with its template.
+  それが行うことは、 `hero`入力プロパティを使ってヒーローオブジェクトを受け取り、そのテンプレートでそのプロパティにバインドすることだけです。
 
-  Here's the complete `HeroDetailComponent`.
+  ここには完全な `HeroDetailComponent`があります。
 +makeExample('toh-3/ts/src/app/hero-detail.component.ts', '', 'src/app/hero-detail.component.ts')
 
 .l-main-section
 :marked
-  ## Declare _HeroDetailComponent_ in the _AppModule_
-  Every component must be declared in one&mdash;and only one&mdash;Angular module.
+  ## _AppModule_の_HeroDetailComponent_を宣言する
+  すべてのコンポーネントは、1つのモジュールと1つのモジュールのみで宣言する必要があります。
 
-  Open `app.module.ts` in your editor and import the `HeroDetailComponent` so you can refer to it.
+  エディタで `app.module.ts`を開き、` HeroDetailComponent`をインポートして参照できます。
 +makeExample('toh-3/ts/src/app/app.module.ts', 'hero-detail-import', 'src/app/app.module.ts')
 
 :marked
-  Add `HeroDetailComponent` to the module's `declarations` array.
+`HeroDetailComponent`をモジュールの` declarations`配列に追加します。
 
 +makeExample('toh-3/ts/src/app/app.module.ts', 'declarations', 'src/app/app.module.ts')(format='.')
 :marked
-  In general, the `declarations` array contains a list of application components, pipes, and directives that belong to the module.
-  A component must be declared in a module before other components can reference it.
-  This module declares only the two application components, `AppComponent` and `HeroDetailComponent`.
+  一般に、 `declarations`配列には、モジュールに属するアプリケーションコンポーネント、パイプ、およびディレクティブのリストが含まれています。
+  他のコンポーネントがモジュールを参照するには、そのモジュール内でコンポーネントを宣言する必要があります。
+  このモジュールは、2つのアプリケーションコンポーネント、 `AppComponent`と` HeroDetailComponent`だけを宣言します。
 .l-sub-section
   :marked
-    Read more about Angular modules in the [NgModules](../guide/ngmodule.html "Angular Modules (NgModule)") guide.
+    Angularモジュールの詳細については、[NgModules]（../guide/ngmodule.html "Angular Modules（NgModule）"）ガイドを参照してください。
 
 a#add-hero-detail
 .l-main-section
 :marked
-  ## Add the _HeroDetailComponent_ to the _AppComponent_
+  ## _AppComponent_に_HeroDetailComponent_を追加します。
 :marked
-  The `AppComponent` is still a master/detail view.
-  It used to display the hero details on its own, before you cut out that portion of the template.
-  Now it will delegate to the `HeroDetailComponent`.
+  `AppComponent`はまだマスター/詳細ビューです。
+  それはあなたがテンプレートのその部分を切り取る前に、ヒーローの詳細をそれ自身で表示することでした。
+  今度は `HeroDetailComponent`に委譲します。
 
 
-  Recall that `hero-detail` is the CSS [`selector`](#selector "HeroDetailComponent selector")
-  in the `HeroDetailComponent` metadata.
-  That's the tag name of the element that represents the `HeroDetailComponent`.
+  `hero-detail`はCSS [` selector`]（＃selector "HeroDetailComponent selector"）です
+  `HeroDetailComponent`メタデータに追加します。
+  これは `HeroDetailComponent`を表す要素のタグ名です。
 
-  Add a `<hero-detail>` element near the bottom of the `AppComponent` template,
-  where the hero detail view used to be.
+  `AppComponent`テンプレートの一番下に` <hero-detail> `要素を追加し、
+  ヒーローのディテールビューはどこにあるのか。
 
-  Coordinate the master `AppComponent` with the `HeroDetailComponent`
-  by binding the `selectedHero` property of the `AppComponent`
-  to the `hero` property of the `HeroDetailComponent`.
+  マスター `AppComponent`と` HeroDetailComponent`を調整してください
+  `AppComponent`の` selectedHero`プロパティをバインドすることによって
+  `HeroDetailComponent`の` hero`プロパティに追加します。
 +makeExample('toh-3/ts/app/app.component.1.html', 'hero-detail-binding', 'app.component.ts (excerpt)')(format='.')
 :marked
- Now every time the `selectedHero` changes, the `HeroDetailComponent` gets a new hero to display.
+ `selectedHero`が変更されるたびに、` HeroDetailComponent`は表示する新しいヒーローを取得します。
 
- The revised `AppComponent` template should look like this:
+ 修正された `AppComponent`テンプレートは次のようになります
 
 +makeExample('toh-3/ts/src/app/app.component.ts', 'hero-detail-template', 'app.component.ts (excerpt)')(format='.')
 
 .l-main-section
 :marked
-  ## What changed?
-  As [before](./toh-pt2.html), whenever a user clicks on a hero name,
-  the hero detail appears below the hero list.
-  But now the `HeroDetailView` is presenting those details.
+  ## 何が変わったの？
+  [before]（./ toh-pt2.html）のように、ユーザーが主人公名をクリックするたびに、
+  ヒーローの詳細の下にヒーローの詳細が表示されます。
+  しかし、今は `HeroDetailView`がそれらの詳細を提示しています。
 
-  Refactoring the original `AppComponent` into two components yields benefits, both now and in the future:
+  元の `AppComponent`を2つのコンポーネントにリファクタリングすることで、現在も将来も利益が得られます：
 
-  1. You simplified the `AppComponent` by reducing its responsibilities.
+  あなたは責任を減らすことによって `AppComponent`を単純化しました。
 
-  1. You can evolve the `HeroDetailComponent` into a rich hero editor
-  without touching the parent `AppComponent`.
+  1.あなたは `HeroDetailComponent`を豊かなヒーローエディタに進化させることができます
+  親 `AppComponent`に触れずに。
 
-  1. You can evolve the `AppComponent` without touching the hero detail view.
+  あなたはヒーローの詳細ビューに触れることなく `AppComponent`を進化させることができます。
 
-  1. You can re-use the `HeroDetailComponent` in the template of some future parent component.
+  1.将来の親コンポーネントのテンプレートで `HeroDetailComponent`を再利用することができます。
 
-  ### Review the app structure
-  Verify that you have the following structure:
-
+  ###アプリの構造を見直す
+  次の構造を持っていることを確認します。
+  
 .filetree
   .file angular-tour-of-heroes
   .children
@@ -226,8 +226,8 @@ a#add-hero-detail
     .file package.json
 
 :marked
-  Here are the code files discussed in this page.
-
+  このページで解説するコードファイルは次のとおりです。
+  
 +makeTabs(`
   toh-3/ts/src/app/hero-detail.component.ts,
   toh-3/ts/src/app/app.component.ts,
@@ -242,25 +242,25 @@ a#add-hero-detail
 
 .l-main-section
 :marked
-  ## The road you’ve travelled
+  ## あなたが旅した道
   
-  Here's what you achieved in this page:
+  このページであなたが達成したことは次のとおりです。
 
-  * You created a reusable component.
-  * You learned how to make a component accept input.
-  * You learned to declare the required application directives in an Angular module. You
-  listed the directives in the `NgModule` decorator's `declarations` array.
-  * You learned to bind a parent component to a child component.
+  *再利用可能なコンポーネントを作成しました。
+  *コンポーネントが入力を受け入れる方法を学びました。
+  *必要なアプリケーション指令をAngularモジュールで宣言することを学びました。君は
+  `NgModule`デコレータの` declarations`配列にディレクティブをリストアップしました。
+  *親コンポーネントを子コンポーネントにバインドする方法を学びました。
 
-  Your app should look like this <live-example></live-example>.
+  あなたのアプリはこの<live-example> </ live-example>のようになります。
 
 .l-main-section
 :marked
-  ## The road ahead
-  The Tour of Heroes app is more reusable with shared components,
-  but its (mock) data is still hard coded within the `AppComponent`.
-  That's not sustainable.
-  Data access should be refactored to a separate service
-  and shared among the components that need data.
+  ## 前の道
+  Tour of Heroesアプリは共有コンポーネントでより再利用可能ですが、
+  その（モック）データは `AppComponent`内でまだハードコーディングされています。
+  それは持続可能ではありません。
+  データアクセスは別のサービスにリファクタリングする必要があります
+  データを必要とするコンポーネント間で共有されます。
 
-  You’ll learn to create services in the [next tutorial](toh-pt4.html) page.
+  [次のチュートリアル]（toh-pt4.html）ページでサービスを作成する方法を学びます。
